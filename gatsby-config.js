@@ -46,7 +46,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://example.com'
+        siteUrl: 'https://localhost:8000'
       }
     },
     'gatsby-plugin-emotion',

@@ -9,11 +9,10 @@ const IndexPage = () => (
   <IndexLayout>
     <Page>
       <Container>
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <Link to="/page-1/">Go to page 1</Link>
+        <Link to="/ux/">Project</Link>
         <br />
-        <Link to="/page-2/">Go to page 2</Link>
+        <br />
+        <Link to="/a-markdown-page/">.MD</Link>
       </Container>
     </Page>
   </IndexLayout>
