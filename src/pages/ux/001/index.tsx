@@ -4,7 +4,9 @@ import { Link } from 'gatsby';
 import Page from '../../../components/Page';
 import Container from '../../../components/Container';
 import IndexLayout from '../../../layouts';
+
 import { Keyboard } from './Keyboard';
+import { Form } from './Form';
 
 const SubPageOne = () => (
   <IndexLayout>
@@ -12,6 +14,7 @@ const SubPageOne = () => (
       <Container>
         <h1>001</h1>
         <Link to="/ux/">Back</Link>
+        <Form />
         <Keyboard />
       </Container>
     </Page>
