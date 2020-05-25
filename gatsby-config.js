@@ -1,15 +1,13 @@
-'use strict';
-
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-starter-typescript-plus',
-    description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
+    title: 'goldins-gatsby',
+    description: 'playground based on gatsby-starter-typescript-plus',
     keywords: 'gatsbyjs, gatsby, javascript, sample, something',
-    siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+    siteUrl: 'https://example.com',
     author: {
-      name: 'Resi Respati',
-      url: 'https://twitter.com/resir014',
-      email: 'resir014@gmail.com'
+      name: 'goldins',
+      email: '',
+      url: 'https://github.com/goldins/goldins-gatsby'
     }
   },
   plugins: [
@@ -48,7 +46,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com'
+        siteUrl: ''
       }
     },
     'gatsby-plugin-emotion',
