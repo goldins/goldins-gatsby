@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Global, css } from '@emotion/core';
+import { css, Global } from '@emotion/core';
 import styled from '@emotion/styled';
 import normalize from '../styles/normalize';
 
@@ -9,11 +9,11 @@ const StyledLayoutRoot = styled.div`
   min-height: 100vh;
 `;
 
-interface LayoutRootProps {
+type LayoutRootProps = React.PropsWithChildren<{
   className?: string;
-}
+}>;
 
-const LayoutRoot: React.FC<LayoutRootProps> = ({ children, className }) => (
+const LayoutRoot = ({ children, className }: LayoutRootProps) => (
   <>
     <Global styles={() => css(normalize)} />
     <StyledLayoutRoot className={className}>{children}</StyledLayoutRoot>

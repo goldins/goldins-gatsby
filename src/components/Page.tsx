@@ -11,12 +11,10 @@ const StyledPage = styled.div`
   margin-bottom: 3rem;
 `;
 
-interface PageProps {
+type PageProps = React.PropsWithChildren<{
   className?: string;
-}
+}>;
 
-const Page: React.FC<PageProps> = ({ children, className }) => (
-  <StyledPage className={className}>{children}</StyledPage>
-);
+const Page = ({ children, className }: PageProps) => <StyledPage className={className}>{children}</StyledPage>;
 
 export default Page;

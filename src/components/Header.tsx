@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { transparentize } from 'polished';
 import { Link } from 'gatsby';
 
-import { heights, dimensions, colors } from '../styles/variables';
+import { colors, dimensions, heights } from '../styles/variables';
 import Container from './Container';
 
 const StyledHeader = styled.header`
@@ -35,7 +35,7 @@ interface HeaderProps {
   title: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => (
+const Header = ({ title }: HeaderProps) => (
   <StyledHeader>
     <HeaderInner>
       <HomepageLink to="/">{title}</HomepageLink>

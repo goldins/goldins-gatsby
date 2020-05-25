@@ -12,11 +12,11 @@ const StyledContainer = styled.div`
   max-width: ${getEmSize(widths.lg)}em;
 `;
 
-interface ContainerProps {
+type ContainerProps = React.PropsWithChildren<{
   className?: string;
-}
+}>;
 
-const Container: React.FC<ContainerProps> = ({ children, className }) => (
+const Container = ({ children, className }: ContainerProps) => (
   <StyledContainer className={className}>{children}</StyledContainer>
 );
 

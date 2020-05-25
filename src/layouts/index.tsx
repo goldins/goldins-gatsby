@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 
 import 'modern-normalize';
 import '../styles/normalize';
@@ -19,7 +19,7 @@ interface StaticQueryProps {
   };
 }
 
-const IndexLayout: React.FC = ({ children }) => (
+const IndexLayout = ({ children }: { children?: React.ReactNode }) => (
   <StaticQuery
     query={graphql`
       query IndexLayoutQuery {
