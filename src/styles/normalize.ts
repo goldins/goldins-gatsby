@@ -2,7 +2,7 @@ import { dimensions, fonts, colors, breakpoints } from './variables';
 import { getEmSize } from './mixins';
 
 export default `
-  html {
+  * {
     box-sizing: border-box;
   }
 
