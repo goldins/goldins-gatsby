@@ -12,7 +12,7 @@ const SubPageOne = () => (
   <IndexLayout>
     <Page>
       <Container>
-        <h1>Bad Keyboard</h1>
+        <h1>Drag and Drop Keys</h1>
         <Link to="/ux/">Back</Link>
 
         <p>Drag and drop the letters into the input field</p>

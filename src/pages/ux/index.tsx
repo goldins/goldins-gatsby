@@ -10,7 +10,7 @@ const PageOne = () => (
     <Page>
       <Container>
         <h1>Page 1</h1>
-        <Link to="/ux/001">Project 001</Link>
+        <Link to="/ux/bad-keyboard">Drag and Drop Keys</Link>
       </Container>
     </Page>
   </IndexLayout>
