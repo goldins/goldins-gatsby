@@ -1,11 +1,8 @@
-/* eslint-disable max-len */
-
-export const colors = {
-  brand: '#663399',
-  lilac: '#9d7cbf',
+const colors = {
+  brand: '#2230c1',
   accent: '#ffb238',
   success: '#37b635',
-  warning: '#ec1818',
+  error: '#ec1818',
   ui: {
     bright: '#e0d6eb',
     light: '#f5f3f7',
@@ -21,14 +18,15 @@ export const colors = {
   black: '#000'
 };
 
-export const fonts = {
+const fonts = {
   sansSerif:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif',
+    '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",' +
+    '"Droid Sans", "Helvetica Neue", Arial, sans-serif',
   serif: 'Georgia, "Times New Roman", Times, serif',
   monospace: 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace, monospace'
 };
 
-export const breakpoints = {
+const breakpoints = {
   xs: 0,
   sm: 576,
   md: 768,
@@ -36,13 +34,13 @@ export const breakpoints = {
   xl: 1200
 };
 
-export const widths = {
+const widths = {
   md: 720,
   lg: 960,
   xl: 1140
 };
 
-export const dimensions = {
+const dimensions = {
   fontSize: {
     regular: 16,
     large: 18
@@ -60,6 +58,17 @@ export const dimensions = {
   containerPadding: 1.5
 };
 
-export const heights = {
+const heights = {
   header: 60
 };
+
+export const defaultTheme = {
+  colors,
+  fonts,
+  breakpoints,
+  widths,
+  dimensions,
+  heights
+};
+
+export type Theme = typeof defaultTheme;

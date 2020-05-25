@@ -1,16 +1,15 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 
-import { widths } from '../styles/variables';
-import { getEmSize } from '../styles/mixins';
+import { Theme } from '../styles/defaultTheme';
 
-const StyledContainer = styled.div`
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: auto;
-  max-width: ${getEmSize(widths.lg)}em;
-`;
+const StyledContainer = styled.div(({ theme }: { theme: Theme }) => ({
+  position: 'relative',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  width: 'auto',
+  maxWidth: `${theme.widths.lg / theme.dimensions.fontSize.regular}em`
+}));
 
 type ContainerProps = React.PropsWithChildren<{
   className?: string;

@@ -1,7 +1,6 @@
-import { dimensions, fonts, colors, breakpoints } from './variables';
-import { getEmSize } from './mixins';
+import { Theme } from './defaultTheme';
 
-export default `
+export default (theme: Theme) => `
   * {
     box-sizing: border-box;
   }
@@ -13,23 +12,23 @@ export default `
   }
 
   html {
-    font-size: ${dimensions.fontSize.regular}px !important;
-    line-height: ${dimensions.lineHeight.regular} !important;
+    font-size: ${theme.dimensions.fontSize.regular}px !important;
+    line-height: ${theme.dimensions.lineHeight.regular} !important;
   }
 
   body {
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    font-family: ${fonts.sansSerif};
-    color: ${colors.black};
-    background-color: ${colors.white};
+    font-family: ${theme.fonts.sansSerif};
+    color: ${theme.colors.black};
+    background-color: ${theme.colors.white};
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
   }
 
   a {
-    color: ${colors.brand};
+    color: ${theme.colors.brand};
     text-decoration: none;
 
     &:hover,
@@ -55,7 +54,7 @@ export default `
   table {
     width: 100%;
     margin-bottom: 1rem;
-    border: 1px solid ${colors.ui.light};
+    border: 1px solid ${theme.colors.ui.light};
     font-size: 85%;
     border-collapse: collapse;
   }
@@ -63,7 +62,7 @@ export default `
   td,
   th {
     padding: .25rem .5rem;
-    border: 1px solid ${colors.ui.light};
+    border: 1px solid ${theme.colors.ui.light};
   }
 
   th {
@@ -74,10 +73,10 @@ export default `
     tr {
       &:nth-of-type(odd) {
         td {
-          background-color: ${colors.ui.whisper};
+          background-color: ${theme.colors.ui.whisper};
         }
         tr {
-          background-color: ${colors.ui.whisper};
+          background-color: ${theme.colors.ui.whisper};
         }
       }
     }
@@ -86,27 +85,27 @@ export default `
   h1, h2, h3, h4, h5, h6 {
     margin-top: 1.414rem;
     margin-bottom: .5rem;
-    color: ${colors.black};
+    color: ${theme.colors.black};
     font-weight: 600;
-    line-height: ${dimensions.lineHeight.heading};
+    line-height: ${theme.dimensions.lineHeight.heading};
     text-rendering: optimizeLegibility;
   }
 
   h1 {
     margin-top: 0;
-    font-size: ${dimensions.headingSizes.h1}rem;
+    font-size: ${theme.dimensions.headingSizes.h1}rem;
   }
 
   h2 {
-    font-size: ${dimensions.headingSizes.h2}rem;
+    font-size: ${theme.dimensions.headingSizes.h2}rem;
   }
 
   h3 {
-    font-size: ${dimensions.headingSizes.h3}rem;
+    font-size: ${theme.dimensions.headingSizes.h3}rem;
   }
 
   h4, h5, h6 {
-    font-size: ${dimensions.headingSizes.h4}rem;
+    font-size: ${theme.dimensions.headingSizes.h4}rem;
   }
 
   p {
@@ -115,7 +114,7 @@ export default `
   }
 
   strong {
-    color: ${colors.black};
+    color: ${theme.colors.black};
   }
 
   ul,
@@ -137,14 +136,14 @@ export default `
     position: relative;
     margin: 1.5rem 0;
     border: 0;
-    border-top: 1px solid ${colors.ui.light};
+    border-top: 1px solid ${theme.colors.ui.light};
   }
 
   blockquote {
     margin: .8rem 0;
     padding: .5rem 1rem;
-    border-left: .25rem solid ${colors.ui.light};
-    color: ${colors.gray.calm};
+    border-left: .25rem solid ${theme.colors.ui.light};
+    color: ${theme.colors.gray.calm};
 
     p {
       &:last-child {
@@ -152,7 +151,7 @@ export default `
       }
     }
 
-    @media (min-width: ${getEmSize(breakpoints.md)}em) {
+    @media (min-width: ${theme.breakpoints.md / theme.dimensions.fontSize.regular}em) {
       padding-right: 5rem;
       padding-left: 1.25rem;
     }
