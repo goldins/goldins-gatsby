@@ -27,20 +27,6 @@ interface PageTemplateProps {
   };
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({ data }) => (
-  <IndexLayout>
-    <Page>
-      <Container>
-        <h1>{data.markdownRemark.frontmatter.title}</h1>
-        {/* eslint-disable-next-line react/no-danger */}
-        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-      </Container>
-    </Page>
-  </IndexLayout>
-);
-
-export default PageTemplate;
-
 export const query = graphql`
   query PageTemplateQuery($slug: String!) {
     site {
@@ -62,3 +48,17 @@ export const query = graphql`
     }
   }
 `;
+
+const PageTemplate = ({ data }: PageTemplateProps) => (
+  <IndexLayout>
+    <Page>
+      <Container>
+        <h1>{data.markdownRemark.frontmatter.title}</h1>
+        {/* eslint-disable-next-line react/no-danger */}
+        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+      </Container>
+    </Page>
+  </IndexLayout>
+);
+
+export default PageTemplate;

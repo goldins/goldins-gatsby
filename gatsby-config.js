@@ -6,8 +6,8 @@ module.exports = {
     siteUrl: 'https://example.com',
     author: {
       name: 'goldins',
-      email: '',
-      url: 'https://github.com/goldins/goldins-gatsby'
+      url: 'https://github.com/goldins/goldins-gatsby',
+      email: ''
     }
   },
   plugins: [
@@ -46,7 +46,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: ''
+        siteUrl: 'https://example.com'
       }
     },
     'gatsby-plugin-emotion',
