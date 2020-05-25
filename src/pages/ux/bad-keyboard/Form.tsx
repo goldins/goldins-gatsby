@@ -44,9 +44,10 @@ export const Form = () => {
   const [values, setValues] = React.useState<FormValues>({ value1: '' });
 
   const resetValues = () => {
-    setValues({ ...values, value1: '' });
+    setValues({ value1: '' });
   };
 
+  // todo: abstraction
   const onDrop: InputDragEventHandler = (e) => {
     if (e.currentTarget) {
       const { currentTarget, dataTransfer } = e;
@@ -57,9 +58,11 @@ export const Form = () => {
 
       setValues(({ value1 }) => {
         const vArray = value1.split('');
+        // for now, just append to the end.
+        // it seems impossible to know at what selection index the drop is occurring before it happens.
+        // selectionStart and selectionEnd are not updated as the drag is happening.
         const cursor = currentTarget.value.length;
         const newVal = [...vArray.splice(0, cursor), text, ...vArray.splice(0, cursor)];
-        // value1 + e.currentTarget.selectionEnd
         return { ...values, value1: newVal.join('') };
       });
       setTimeout(() => {
@@ -79,6 +82,7 @@ export const Form = () => {
         readOnly
       />
       <StyledButton type="button">Submit</StyledButton>
+      {/* todo: replace with backspace? */}
       <StyledButton type="button" onClick={resetValues}>
         Clear
       </StyledButton>

@@ -27,7 +27,7 @@ const StyledKey = styled.div(({ theme }: { theme: Theme }) => ({
   }
 }));
 
-const onDragEnd = (e: any) => {
+const onDragEnd: DragEventHandler<HTMLElement> = (e) => {
   e.currentTarget.style.borderStyle = 'solid';
 };
 

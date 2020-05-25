@@ -4,9 +4,10 @@ import styled from '@emotion/styled';
 import { BigKey, Keys, Key } from './Keys';
 
 const ALPHA = 'abcdefghijklmnopqrstuvwxyz';
-export const NUMERIC = '01234567890';
-export const SPECIAL = '`~!@#$%^&*()-_=+[{]}\\|;:\'",<.>/?';
+const NUMERIC = '01234567890';
+const SPECIAL = '`~!@#$%^&*()-_=+[{]}\\|;:\'",<.>/?';
 
+// todo: change back to SHIFT
 export const CAPS = 'CAPS LOCK';
 
 const StyledKeyboard = styled.div(() => ({
