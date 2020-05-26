@@ -1,51 +1,82 @@
-import React from 'react';
+import React, { DragEventHandler } from 'react';
 import styled from '@emotion/styled';
 
-import { BigKey, Keys, Key } from './Keys';
+import { Keys, CharKey, BigCharKey, BigKey } from './Keys';
 
 const ALPHA = 'abcdefghijklmnopqrstuvwxyz';
-const NUMERIC = '01234567890';
+const NUMERIC = '0123456789';
 const SPECIAL = '`~!@#$%^&*()-_=+[{]}\\|;:\'",<.>/?';
 
-// todo: change back to SHIFT
-export const CAPS = 'CAPS LOCK';
+export const SHIFT = 'SHIFT';
+export const BACKSPACE = 'BACKSPACE';
 
 const StyledKeyboard = styled.div(() => ({
   display: 'flex',
   userSelect: 'none'
 }));
 
-type Modifiers = {
-  caps: boolean;
-};
-
 export const Keyboard = () => {
-  const [modifiers, setModifiers] = React.useState<Modifiers>({ caps: false });
+  const [shiftDrag, setShiftDrag] = React.useState(false);
+  const [shifted, setShifted] = React.useState<string | null>(null);
 
-  const shiftToggle = () => {
-    setModifiers((current) => ({ ...modifiers, caps: !current.caps }));
+  const onShiftDragStart = () => {
+    setShiftDrag(true);
+  };
+
+  const onShiftDragEnd = () => {
+    setShiftDrag(false);
+  };
+
+  const onDragEnter: DragEventHandler<HTMLElement> = (e) => {
+    if (shiftDrag) {
+      e.currentTarget.style.borderStyle = 'dashed';
+      setShifted(e.currentTarget.innerText);
+    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+  };
+
+  const onDragLeave: DragEventHandler<HTMLElement> = (e) => {
+    if (shiftDrag) {
+      e.currentTarget.style.borderStyle = 'solid';
+    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+  };
+
+  const onDragEnd: DragEventHandler<HTMLElement> = () => {
+    setShifted(null);
   };
 
   return (
     <StyledKeyboard>
       <Keys>
-        {ALPHA.split('').map((v, i) => (
-          <Key key={i.toString()}>{modifiers.caps ? v.toUpperCase() : v}</Key>
+        {ALPHA.split('').map((v) => (
+          <CharKey
+            showDroppable={shiftDrag}
+            key={v}
+            onDragEnter={onDragEnter}
+            onDragLeave={onDragLeave}
+            onDragEnd={onDragEnd}
+          >
+            {shifted === v ? v.toUpperCase() : v}
+          </CharKey>
         ))}
       </Keys>
       <Keys>
-        {NUMERIC.split('').map((v, i) => (
-          <Key key={i.toString()}>{v}</Key>
+        {NUMERIC.split('').map((v) => (
+          <CharKey key={v}>{v}</CharKey>
         ))}
       </Keys>
       <Keys>
-        {SPECIAL.split('').map((v, i) => (
-          <Key key={i.toString()}>{v}</Key>
+        {SPECIAL.split('').map((v) => (
+          <CharKey key={v}>{v}</CharKey>
         ))}
       </Keys>
-      <BigKey onClick={shiftToggle} className={modifiers.caps ? 'active' : ''}>
-        {CAPS}
+      <BigKey draggable onDragStart={onShiftDragStart} onDragEnd={onShiftDragEnd}>
+        {SHIFT}
       </BigKey>
+      <BigCharKey value="\x08">{BACKSPACE}</BigCharKey>
     </StyledKeyboard>
   );
 };

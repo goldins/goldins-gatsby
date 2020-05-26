@@ -13,7 +13,8 @@ const StyledInput = styled.input(({ theme }: { theme: Theme }) => ({
   lineHeight: theme.dimensions.lineHeight.regular * 1.5,
   letterSpacing: 2,
   borderWidth: 1,
-  borderColor: theme.colors.gray.calm
+  borderColor: theme.colors.gray.calm,
+  cursor: 'not-allowed'
 }));
 
 const StyledButton = styled.button(({ theme }: { theme: Theme }) => ({
@@ -57,13 +58,14 @@ export const Form = () => {
       const text = dataTransfer.getData('text');
 
       setValues(({ value1 }) => {
-        const vArray = value1.split('');
         // for now, just append to the end.
         // it seems impossible to know at what selection index the drop is occurring before it happens.
         // selectionStart and selectionEnd are not updated as the drag is happening.
-        const cursor = currentTarget.value.length;
-        const newVal = [...vArray.splice(0, cursor), text, ...vArray.splice(0, cursor)];
-        return { ...values, value1: newVal.join('') };
+        const newVal = value1 + text;
+
+        // eslint-disable-next-line no-control-regex
+        const afterBackspace = newVal.replace(/.?\\x08/, '');
+        return { ...values, value1: afterBackspace };
       });
       setTimeout(() => {
         currentTarget.blur();
